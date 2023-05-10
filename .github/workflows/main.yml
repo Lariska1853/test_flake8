@@ -16,7 +16,7 @@ jobs:
     - name: black
       run: black .
     - name: flake8
-      run: flake8 --per-file-ignores="__init__.py:F401" .
+      run: flake8 .
     - name: mypy
       run: mypy .
 
