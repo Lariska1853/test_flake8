@@ -36,8 +36,8 @@ async def process_username_sent(message: Message, bot: Bot, state: FSMContext):
     order = await state.get_data()
     form_msg_id = order["form_msg_id"]
     chat_id = order["chat_id"]
-    await bot.edit_message_text(text=text, chat_id=chat_id)
-                                #message_id=form_msg_id)
+    await bot.edit_message_text(text=text, chat_id=chat_id,
+                                message_id=form_msg_id)
     await state.set_state(FSMLogin.fill_password)
 
 
