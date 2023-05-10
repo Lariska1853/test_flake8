@@ -1,0 +1,22 @@
+on: push
+
+jobs:
+  code-style:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Install requirements
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: black
+      run: black .
+    - name: flake8
+      run: flake8 --per-file-ignores="__init__.py:F401" .
+    - name: mypy
+      run: mypy .
+
